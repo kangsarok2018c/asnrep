@@ -91,88 +91,139 @@
 <body class="min-h-screen flex flex-col overflow-x-hidden antialiased selection:bg-blue-100 selection:text-blue-900">
 
     <!-- ==================== HEADER UTAMA ==================== -->
-    <header class="sticky top-0 z-40 w-full max-w-full overflow-x-clip bg-white/95 backdrop-blur-md border-b border-slate-200/80 shadow-xs">
-        <div class="max-w-7xl mx-auto px-2.5 sm:px-6 h-14 sm:h-16 flex items-center justify-between gap-1.5 min-w-0">
-            <button type="button" onclick="navigateHomeByRole()" class="flex items-center gap-2 text-left min-w-0 shrink group focus:outline-none">
-                <div class="w-8 h-8 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800 text-white flex items-center justify-center shadow-sm shrink-0 group-hover:scale-105 transition-transform">
-                    <i class="ph-fill ph-graduation-cap text-base sm:text-xl text-amber-400"></i>
+    <header class="sticky top-0 z-40 w-full max-w-full bg-white/95 backdrop-blur-xl border-b border-slate-200/90 shadow-xs">
+        <div class="max-w-7xl mx-auto px-3 sm:px-6 h-16 flex items-center justify-between gap-3">
+            <!-- Brand Logo & Title -->
+            <button type="button" onclick="navigateHomeByRole()" class="flex items-center gap-2.5 text-left shrink-0 group focus:outline-none">
+                <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-br from-slate-900 via-blue-950 to-indigo-900 text-white flex items-center justify-center shadow-sm ring-1 ring-slate-900/10 shrink-0 group-hover:scale-105 transition-transform">
+                    <i class="ph-fill ph-graduation-cap text-lg sm:text-xl text-amber-400"></i>
                 </div>
-                <div class="min-w-0">
+                <div class="leading-tight">
                     <div class="flex items-center gap-1.5">
-                        <span class="font-extrabold text-xs sm:text-base tracking-tight text-slate-900 truncate">CAT SKD CPNS</span>
-                        <span class="hidden md:inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-bold bg-blue-50 text-blue-700 border border-blue-200">BKN 110 Soal</span>
+                        <span class="font-extrabold text-sm sm:text-[15px] tracking-tight text-slate-900 whitespace-nowrap">CAT SKD CPNS</span>
+                        <span class="hidden xl:inline-flex items-center px-1.5 py-0.5 rounded-md text-[10px] font-bold bg-blue-50 text-blue-700 border border-blue-200/80 whitespace-nowrap">110 Soal</span>
                     </div>
-                    <p class="text-[10px] sm:text-xs text-slate-500 truncate hidden xs:block">Simulasi TWK • TIU • TKP</p>
+                    <p class="text-[11px] text-slate-500 font-medium whitespace-nowrap hidden sm:block">Simulasi TWK • TIU • TKP</p>
                 </div>
             </button>
 
-            <nav id="desktop-nav" class="hidden lg:flex items-center gap-1 bg-slate-100/90 p-1 rounded-xl border border-slate-200/70">
-                <button type="button" data-nav="view-landing" onclick="switchView('view-landing')" class="nav-btn px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-600 hover:text-slate-900 transition-all">Beranda</button>
-                <button type="button" data-nav="view-dashboard" onclick="switchView('view-dashboard')" class="nav-btn px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-600 hover:text-slate-900 transition-all">Dashboard</button>
-                <button type="button" data-nav="view-sim-config" onclick="switchView('view-sim-config')" class="nav-btn px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-600 hover:text-slate-900 transition-all">Simulasi CAT</button>
-                <button type="button" data-nav="view-study-config" onclick="switchView('view-study-config')" class="nav-btn px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-600 hover:text-slate-900 transition-all">Mode Belajar</button>
-                <button type="button" data-nav="view-history" onclick="switchView('view-history')" class="nav-btn px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-600 hover:text-slate-900 transition-all">Riwayat & Peringkat</button>
-                <button type="button" data-nav="view-bank" onclick="switchView('view-bank')" class="admin-only-el hidden nav-btn px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-600 hover:text-slate-900 transition-all">Bank Soal</button>
-                <button type="button" data-nav="view-tokens" onclick="switchView('view-tokens')" class="admin-only-el hidden nav-btn px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-600 hover:text-slate-900 transition-all">Generate Token</button>
-                <button type="button" data-nav="view-settings" onclick="switchView('view-settings')" class="admin-only-el hidden nav-btn px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-600 hover:text-slate-900 transition-all">Pengaturan</button>
+            <!-- Desktop Navigation Bar (Clean, Single-Line, Icon + Label) -->
+            <nav id="desktop-nav" class="hidden lg:flex items-center gap-1 bg-slate-100/80 p-1 rounded-2xl border border-slate-200/80">
+                <button type="button" data-nav="view-landing" onclick="switchView('view-landing')" class="nav-btn inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold text-slate-600 hover:text-slate-900 whitespace-nowrap transition-all">
+                    <i class="ph-bold ph-house text-sm opacity-75"></i>
+                    <span>Beranda</span>
+                </button>
+                <button type="button" data-nav="view-dashboard" onclick="switchView('view-dashboard')" class="nav-btn inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold text-slate-600 hover:text-slate-900 whitespace-nowrap transition-all">
+                    <i class="ph-bold ph-squares-four text-sm opacity-75"></i>
+                    <span>Dashboard</span>
+                </button>
+                <button type="button" data-nav="view-sim-config" onclick="switchView('view-sim-config')" class="nav-btn inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold text-slate-600 hover:text-slate-900 whitespace-nowrap transition-all">
+                    <i class="ph-bold ph-timer text-sm opacity-75"></i>
+                    <span>Simulasi</span>
+                </button>
+                <button type="button" data-nav="view-study-config" onclick="switchView('view-study-config')" class="nav-btn inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold text-slate-600 hover:text-slate-900 whitespace-nowrap transition-all">
+                    <i class="ph-bold ph-book-open text-sm opacity-75"></i>
+                    <span>Belajar</span>
+                </button>
+                <button type="button" data-nav="view-history" onclick="switchView('view-history')" class="nav-btn inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold text-slate-600 hover:text-slate-900 whitespace-nowrap transition-all">
+                    <i class="ph-bold ph-trophy text-sm opacity-75"></i>
+                    <span>Peringkat</span>
+                </button>
+
+                <!-- Admin Divider & Direct Tabs (XL+) -->
+                <span class="admin-only-el hidden xl:inline-block h-4 w-px bg-slate-300/80 mx-0.5"></span>
+                <button type="button" data-nav="view-bank" onclick="switchView('view-bank')" class="admin-only-el hidden xl:inline-flex nav-btn items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold text-slate-600 hover:text-slate-900 whitespace-nowrap transition-all">
+                    <i class="ph-bold ph-database text-sm opacity-75"></i>
+                    <span>Bank Soal</span>
+                </button>
+                <button type="button" data-nav="view-tokens" onclick="switchView('view-tokens')" class="admin-only-el hidden xl:inline-flex nav-btn items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold text-slate-600 hover:text-slate-900 whitespace-nowrap transition-all">
+                    <i class="ph-bold ph-ticket text-sm opacity-75"></i>
+                    <span>Token</span>
+                </button>
+                <button type="button" data-nav="view-settings" onclick="switchView('view-settings')" class="admin-only-el hidden xl:inline-flex nav-btn items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold text-slate-600 hover:text-slate-900 whitespace-nowrap transition-all">
+                    <i class="ph-bold ph-gear text-sm opacity-75"></i>
+                    <span>Pengaturan</span>
+                </button>
+
+                <!-- Compact Admin Dropdown on LG (1024px - 1279px) so navbar never wraps -->
+                <div class="admin-only-el hidden lg:block xl:hidden relative" id="admin-more-dropdown-wrap">
+                    <button type="button" onclick="toggleAdminMoreDropdown()" id="btn-admin-more-dropdown" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold text-blue-700 bg-blue-50/90 hover:bg-blue-100 border border-blue-200/80 whitespace-nowrap transition-all">
+                        <i class="ph-bold ph-sliders-horizontal text-sm"></i>
+                        <span>Panel Admin</span>
+                        <i class="ph-bold ph-caret-down text-[10px]"></i>
+                    </button>
+                    <div id="admin-more-dropdown-menu" class="hidden absolute right-0 mt-2 w-52 rounded-2xl bg-white border border-slate-200 shadow-xl p-1.5 space-y-1 z-50">
+                        <button type="button" data-nav="view-bank" onclick="switchView('view-bank'); toggleAdminMoreDropdown(false)" class="nav-btn w-full flex items-center gap-2 px-3 py-2 rounded-xl text-xs font-semibold text-slate-700 hover:bg-slate-100 text-left">
+                            <i class="ph-bold ph-database text-blue-600"></i> Bank Soal & Impor
+                        </button>
+                        <button type="button" data-nav="view-tokens" onclick="switchView('view-tokens'); toggleAdminMoreDropdown(false)" class="nav-btn w-full flex items-center gap-2 px-3 py-2 rounded-xl text-xs font-semibold text-slate-700 hover:bg-slate-100 text-left">
+                            <i class="ph-bold ph-ticket text-amber-600"></i> Pendaftar & Token
+                        </button>
+                        <button type="button" data-nav="view-settings" onclick="switchView('view-settings'); toggleAdminMoreDropdown(false)" class="nav-btn w-full flex items-center gap-2 px-3 py-2 rounded-xl text-xs font-semibold text-slate-700 hover:bg-slate-100 text-left">
+                            <i class="ph-bold ph-gear text-slate-700"></i> Pengaturan Sistem
+                        </button>
+                    </div>
+                </div>
             </nav>
 
-            <div class="flex items-center gap-1 sm:gap-2 shrink-0">
-                <div id="header-role-badge" class="hidden sm:flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-bold bg-emerald-50 text-emerald-700 border border-emerald-200 max-w-[150px] truncate">
-                    <i class="ph-fill ph-seal-check shrink-0"></i>
+            <!-- Right Action Controls -->
+            <div class="flex items-center gap-1.5 sm:gap-2 shrink-0">
+                <div id="header-role-badge" class="hidden sm:inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl text-xs font-bold bg-emerald-50 text-emerald-700 border border-emerald-200/90 max-w-[140px] whitespace-nowrap">
+                    <span class="w-2 h-2 rounded-full bg-emerald-500 shrink-0"></span>
                     <span id="header-role-text" class="truncate">Akses Aktif</span>
                 </div>
 
-                <button type="button" id="btn-header-token" onclick="openTokenModal()" class="inline-flex items-center gap-1 px-2 sm:px-3 py-1.5 rounded-lg text-[11px] sm:text-xs font-bold bg-amber-500 hover:bg-amber-600 text-slate-950 shadow-xs transition-all shrink-0">
-                    <i class="ph-bold ph-key text-xs sm:text-sm"></i>
+                <button type="button" id="btn-header-token" onclick="openTokenModal()" class="inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-xl text-xs font-bold bg-amber-400 hover:bg-amber-500 text-slate-950 shadow-2xs whitespace-nowrap transition-all">
+                    <i class="ph-bold ph-key text-sm"></i>
                     <span>Token</span>
                 </button>
 
-                <button type="button" id="btn-header-admin" onclick="openAdminLoginModal()" class="inline-flex items-center gap-1 px-2 sm:px-3 py-1.5 rounded-lg text-[11px] sm:text-xs font-bold bg-slate-900 hover:bg-slate-800 text-white shadow-xs transition-all shrink-0">
-                    <i class="ph-bold ph-shield-check text-xs sm:text-sm text-blue-400"></i>
+                <button type="button" id="btn-header-admin" onclick="openAdminLoginModal()" class="inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-xl text-xs font-bold bg-slate-900 hover:bg-slate-800 text-white shadow-2xs whitespace-nowrap transition-all">
+                    <i class="ph-bold ph-shield-check text-sm text-blue-400"></i>
                     <span>Admin</span>
                 </button>
 
-                <button type="button" id="btn-header-logout" onclick="logoutCurrentAccess()" class="hidden inline-flex items-center gap-1 px-2 sm:px-2.5 py-1.5 rounded-lg text-[11px] sm:text-xs font-bold bg-rose-50 hover:bg-rose-100 text-rose-700 border border-rose-200 transition-all shrink-0" title="Keluar Sesi">
-                    <i class="ph-bold ph-sign-out text-xs sm:text-sm"></i>
-                    <span class="hidden sm:inline">Keluar</span>
+                <button type="button" id="btn-header-logout" onclick="logoutCurrentAccess()" class="hidden inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl text-xs font-bold bg-rose-50 hover:bg-rose-100 text-rose-700 border border-rose-200 whitespace-nowrap transition-all" title="Keluar Sesi">
+                    <i class="ph-bold ph-sign-out text-sm"></i>
+                    <span class="hidden md:inline">Keluar</span>
                 </button>
 
-                <button type="button" onclick="toggleMobileMenu()" aria-label="Menu Navigasi" class="lg:hidden inline-flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 rounded-lg border border-slate-200 bg-white hover:bg-slate-50 text-slate-700 shrink-0">
-                    <i id="mobile-menu-icon" class="ph-bold ph-list text-base sm:text-lg"></i>
+                <button type="button" onclick="toggleMobileMenu()" aria-label="Menu Navigasi" class="lg:hidden inline-flex items-center justify-center w-9 h-9 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 text-slate-700 shrink-0">
+                    <i id="mobile-menu-icon" class="ph-bold ph-list text-lg"></i>
                 </button>
             </div>
         </div>
 
-        <div id="mobile-nav-drawer" class="hidden lg:hidden border-t border-slate-200 bg-white px-3 py-3 space-y-1.5 shadow-lg">
-            <div id="mobile-role-info" class="hidden px-3 py-2 rounded-lg bg-slate-50 border border-slate-200 text-xs font-semibold text-slate-700 flex items-center justify-between">
+        <!-- Mobile & Tablet Navigation Drawer -->
+        <div id="mobile-nav-drawer" class="hidden lg:hidden border-t border-slate-200 bg-white/98 backdrop-blur-md px-4 py-3.5 space-y-1.5 shadow-xl">
+            <div id="mobile-role-info" class="hidden px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-xs font-semibold text-slate-700 flex items-center justify-between mb-2">
                 <span id="mobile-role-label">Mode Pengunjung</span>
                 <span id="mobile-pkg-scope" class="text-[11px] font-bold text-blue-700"></span>
             </div>
-            <button type="button" data-nav="view-landing" onclick="switchView('view-landing'); toggleMobileMenu(false)" class="mobile-nav-btn w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-xs font-semibold text-slate-700 hover:bg-slate-100">
+            <button type="button" data-nav="view-landing" onclick="switchView('view-landing'); toggleMobileMenu(false)" class="mobile-nav-btn w-full flex items-center gap-2.5 px-3.5 py-2.5 rounded-xl text-xs font-semibold text-slate-700 hover:bg-slate-100">
                 <i class="ph-bold ph-house text-base text-slate-500"></i> Beranda & Katalog Paket
             </button>
-            <button type="button" data-nav="view-dashboard" onclick="switchView('view-dashboard'); toggleMobileMenu(false)" class="mobile-nav-btn w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-xs font-semibold text-slate-700 hover:bg-slate-100">
+            <button type="button" data-nav="view-dashboard" onclick="switchView('view-dashboard'); toggleMobileMenu(false)" class="mobile-nav-btn w-full flex items-center gap-2.5 px-3.5 py-2.5 rounded-xl text-xs font-semibold text-slate-700 hover:bg-slate-100">
                 <i class="ph-bold ph-squares-four text-base text-blue-600"></i> Dashboard Peserta
             </button>
-            <button type="button" data-nav="view-sim-config" onclick="switchView('view-sim-config'); toggleMobileMenu(false)" class="mobile-nav-btn w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-xs font-semibold text-slate-700 hover:bg-slate-100">
+            <button type="button" data-nav="view-sim-config" onclick="switchView('view-sim-config'); toggleMobileMenu(false)" class="mobile-nav-btn w-full flex items-center gap-2.5 px-3.5 py-2.5 rounded-xl text-xs font-semibold text-slate-700 hover:bg-slate-100">
                 <i class="ph-bold ph-timer text-base text-emerald-600"></i> Simulasi CAT SKD (110 Soal)
             </button>
-            <button type="button" data-nav="view-study-config" onclick="switchView('view-study-config'); toggleMobileMenu(false)" class="mobile-nav-btn w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-xs font-semibold text-slate-700 hover:bg-slate-100">
+            <button type="button" data-nav="view-study-config" onclick="switchView('view-study-config'); toggleMobileMenu(false)" class="mobile-nav-btn w-full flex items-center gap-2.5 px-3.5 py-2.5 rounded-xl text-xs font-semibold text-slate-700 hover:bg-slate-100">
                 <i class="ph-bold ph-book-open-text text-base text-indigo-600"></i> Mode Belajar & Pembahasan
             </button>
-            <button type="button" data-nav="view-history" onclick="switchView('view-history'); toggleMobileMenu(false)" class="mobile-nav-btn w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-xs font-semibold text-slate-700 hover:bg-slate-100">
+            <button type="button" data-nav="view-history" onclick="switchView('view-history'); toggleMobileMenu(false)" class="mobile-nav-btn w-full flex items-center gap-2.5 px-3.5 py-2.5 rounded-xl text-xs font-semibold text-slate-700 hover:bg-slate-100">
                 <i class="ph-bold ph-trophy text-base text-amber-600"></i> Riwayat & Peringkat Cloud
             </button>
-            <div class="admin-only-el hidden pt-2 mt-2 border-t border-slate-200 space-y-1">
-                <p class="px-3 text-[10px] font-bold uppercase tracking-wider text-slate-400">Panel Administrator</p>
-                <button type="button" data-nav="view-bank" onclick="switchView('view-bank'); toggleMobileMenu(false)" class="mobile-nav-btn w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-xs font-semibold text-slate-700 hover:bg-slate-100">
+            <div class="admin-only-el hidden pt-2.5 mt-2 border-t border-slate-200 space-y-1">
+                <p class="px-3.5 pb-1 text-[10px] font-extrabold uppercase tracking-wider text-slate-400">Panel Administrator</p>
+                <button type="button" data-nav="view-bank" onclick="switchView('view-bank'); toggleMobileMenu(false)" class="mobile-nav-btn w-full flex items-center gap-2.5 px-3.5 py-2.5 rounded-xl text-xs font-semibold text-slate-700 hover:bg-slate-100">
                     <i class="ph-bold ph-database text-base text-blue-700"></i> Bank Soal & Impor CSV/JSON
                 </button>
-                <button type="button" data-nav="view-tokens" onclick="switchView('view-tokens'); toggleMobileMenu(false)" class="mobile-nav-btn w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-xs font-semibold text-slate-700 hover:bg-slate-100">
+                <button type="button" data-nav="view-tokens" onclick="switchView('view-tokens'); toggleMobileMenu(false)" class="mobile-nav-btn w-full flex items-center gap-2.5 px-3.5 py-2.5 rounded-xl text-xs font-semibold text-slate-700 hover:bg-slate-100">
                     <i class="ph-bold ph-ticket text-base text-amber-600"></i> Pendaftar & Generate Token
                 </button>
-                <button type="button" data-nav="view-settings" onclick="switchView('view-settings'); toggleMobileMenu(false)" class="mobile-nav-btn w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-xs font-semibold text-slate-700 hover:bg-slate-100">
+                <button type="button" data-nav="view-settings" onclick="switchView('view-settings'); toggleMobileMenu(false)" class="mobile-nav-btn w-full flex items-center gap-2.5 px-3.5 py-2.5 rounded-xl text-xs font-semibold text-slate-700 hover:bg-slate-100">
                     <i class="ph-bold ph-gear text-base text-slate-700"></i> Pengaturan & Editor BKN
                 </button>
             </div>
@@ -2195,6 +2246,7 @@ function doPost(e) {
 
         function switchView(viewId) {
             toggleMobileMenu(false);
+            toggleAdminMoreDropdown(false);
             const adminViews = ['view-bank', 'view-tokens', 'view-settings'];
             if (adminViews.includes(viewId) && !hasAdminAccess()) {
                 openAdminLoginModal();
@@ -2212,40 +2264,53 @@ function doPost(e) {
 
             document.querySelectorAll('.nav-btn').forEach(btn => {
                 if (btn.dataset.nav === viewId) {
-                    btn.classList.add('bg-white', 'text-slate-900', 'shadow-xs');
-                    btn.classList.remove('text-slate-600');
+                    btn.classList.add('bg-white', 'text-slate-900', 'shadow-xs', 'font-bold');
+                    btn.classList.remove('text-slate-600', 'font-semibold');
                 } else {
-                    btn.classList.remove('bg-white', 'text-slate-900', 'shadow-xs');
-                    btn.classList.add('text-slate-600');
+                    btn.classList.remove('bg-white', 'text-slate-900', 'shadow-xs', 'font-bold');
+                    btn.classList.add('text-slate-600', 'font-semibold');
                 }
             });
 
-            if (viewId === 'view-dashboard') {
-                updateDashboardStats();
-            } else if (viewId === 'view-sim-config' || viewId === 'view-study-config') {
+            document.querySelectorAll('.mobile-nav-btn').forEach(btn => {
+                if (btn.dataset.nav === viewId) {
+                    btn.classList.add('bg-blue-50', 'text-blue-800', 'font-bold');
+                    btn.classList.remove('text-slate-700');
+                } else {
+                    btn.classList.remove('bg-blue-50', 'text-blue-800', 'font-bold');
+                    btn.classList.add('text-slate-700');
+                }
+            });
+
+            const adminMoreBtn = document.getElementById('btn-admin-more-dropdown');
+            if (adminMoreBtn) {
+                if (adminViews.includes(viewId)) {
+                    adminMoreBtn.classList.add('bg-slate-900', 'text-white', 'border-slate-900');
+                    adminMoreBtn.classList.remove('bg-blue-50/90', 'text-blue-700', 'border-blue-200/80');
+                } else {
+                    adminMoreBtn.classList.remove('bg-slate-900', 'text-white', 'border-slate-900');
+                    adminMoreBtn.classList.add('bg-blue-50/90', 'text-blue-700', 'border-blue-200/80');
+                }
+            }
+
+            if (viewId === 'view-dashboard') updateDashboardStats();
+            if (viewId === 'view-sim-config' || viewId === 'view-study-config') refreshPackageSelectors();
+            if (viewId === 'view-bank') {
                 refreshPackageSelectors();
-            } else if (viewId === 'view-history') {
-                refreshPackageSelectors();
-                renderLocalHistory();
-                renderCloudLeaderboard();
-                if (state.sheetsUrl) fetchCloudLeaderboard(true);
-            } else if (viewId === 'view-tokens') {
+                renderBankQuestions(false);
+            }
+            if (viewId === 'view-tokens') {
                 refreshPackageSelectors();
                 renderPackageRegistrations();
                 renderTokenHistory();
-                if (state.sheetsUrl) {
-                    syncRegistrationsWithSheets(true);
-                    syncTokensWithSheets(true);
-                }
-            } else if (viewId === 'view-bank') {
+            }
+            if (viewId === 'view-settings') populateSettingsForm();
+            if (viewId === 'view-history') {
                 refreshPackageSelectors();
-                renderBankPackageSummary();
-                renderBankQuestions();
-            } else if (viewId === 'view-settings') {
-                populateSettingsForm();
+                renderLocalHistory();
+                renderCloudLeaderboard();
             }
 
-            renderResumeSessionBanner();
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
@@ -2257,46 +2322,16 @@ function doPost(e) {
             }
         }
 
-        function toggleMobileMenu(forceState) {
-            const drawer = document.getElementById('mobile-nav-drawer');
-            const icon = document.getElementById('mobile-menu-icon');
-            if (!drawer) return;
-            const willOpen = typeof forceState === 'boolean' ? forceState : drawer.classList.contains('hidden');
-            if (willOpen) {
-                drawer.classList.remove('hidden');
-                if (icon) icon.className = 'ph-bold ph-x text-base sm:text-lg';
-            } else {
-                drawer.classList.add('hidden');
-                if (icon) icon.className = 'ph-bold ph-list text-base sm:text-lg';
-            }
-        }
-
-        function openPackageRegistrationModal(preselectedPackage = '') {
+        function openPackageRegistrationModal(prefillPackage = '') {
             refreshPackageSelectors();
             const modal = document.getElementById('package-reg-modal');
             const pkgSelect = document.getElementById('reg-pkg-package');
-            const nameInput = document.getElementById('reg-pkg-name');
-            const contactInput = document.getElementById('reg-pkg-contact');
-            const noteInput = document.getElementById('reg-pkg-note');
-            if (!modal || !pkgSelect) return;
-
-            if (preselectedPackage) {
-                const exists = Array.from(pkgSelect.options).some(opt => opt.value === preselectedPackage);
-                if (!exists) {
-                    const opt = document.createElement('option');
-                    opt.value = preselectedPackage;
-                    opt.textContent = preselectedPackage;
-                    pkgSelect.appendChild(opt);
-                }
-                pkgSelect.value = preselectedPackage;
+            if (!modal) return;
+            if (pkgSelect && prefillPackage) {
+                pkgSelect.value = prefillPackage;
             }
-            if (nameInput) nameInput.value = '';
-            if (contactInput) contactInput.value = '';
-            if (noteInput) noteInput.value = '';
-
             modal.classList.remove('hidden');
             modal.classList.add('flex');
-            if (nameInput) setTimeout(() => nameInput.focus(), 60);
         }
 
         function closePackageRegistrationModal() {
@@ -2306,40 +2341,30 @@ function doPost(e) {
             modal.classList.remove('flex');
         }
 
+        function selectPackageFromCatalog(packageName) {
+            if (hasAdminAccess() || isPackageAllowedForCurrentUser(packageName)) {
+                switchView('view-sim-config');
+                const simSel = document.getElementById('sim-package-select');
+                if (simSel) simSel.value = packageName;
+                return;
+            }
+            openPackageRegistrationModal(packageName);
+        }
+
         function submitPackageRegistration(event) {
             if (event) event.preventDefault();
             const name = (document.getElementById('reg-pkg-name')?.value || '').trim();
             const contact = (document.getElementById('reg-pkg-contact')?.value || '').trim();
-            const selectedPackage = (document.getElementById('reg-pkg-package')?.value || 'ALL').trim();
+            const selectedPackage = document.getElementById('reg-pkg-package')?.value || 'ALL';
             const note = (document.getElementById('reg-pkg-note')?.value || '').trim();
 
             if (!name || !contact) {
-                showModal({
-                    title: 'Data Belum Lengkap',
-                    message: 'Mohon isi Nama Lengkap dan Nomor WhatsApp / Email Anda terlebih dahulu.',
-                    type: 'warning'
-                });
+                showModal({ title: 'Data Belum Lengkap', message: 'Harap isi Nama Lengkap dan Nomor WhatsApp/Email aktif.', type: 'warning' });
                 return;
             }
 
-            const duplicatePending = (state.registrations || []).find(r =>
-                r.status !== 'issued' &&
-                (r.name || '').toLowerCase() === name.toLowerCase() &&
-                (r.selectedPackage || 'ALL') === selectedPackage
-            );
-
-            if (duplicatePending) {
-                closePackageRegistrationModal();
-                showModal({
-                    title: 'Pendaftaran Sudah Tercatat',
-                    message: `Pendaftaran atas nama "${name}" untuk paket "${selectedPackage === 'ALL' ? 'Semua Paket (VIP All-Access)' : selectedPackage}" sudah masuk dalam antrean Admin. Silakan hubungi Admin untuk menerima kode token Anda.`,
-                    type: 'info'
-                });
-                return;
-            }
-
-            const newReg = {
-                id: 'REG-' + Date.now() + '-' + Math.random().toString(36).slice(2, 6).toUpperCase(),
+            const regObj = {
+                id: 'REG-' + Date.now(),
                 name,
                 contact,
                 selectedPackage,
@@ -2349,34 +2374,26 @@ function doPost(e) {
                 createdAt: new Date().toISOString()
             };
 
-            state.registrations = [newReg, ...(state.registrations || [])];
+            state.registrations = [regObj, ...(state.registrations || [])];
             persistRegistrations(true);
-            renderPackageRegistrations();
+
+            document.getElementById('reg-pkg-name').value = '';
+            document.getElementById('reg-pkg-contact').value = '';
+            document.getElementById('reg-pkg-note').value = '';
             closePackageRegistrationModal();
 
-            const pkgLabel = selectedPackage === 'ALL' ? 'Semua Paket (VIP All-Access)' : selectedPackage;
             showModal({
                 title: 'Pendaftaran Paket Berhasil!',
-                message: `Terima kasih ${name}! Pilihan "${pkgLabel}" telah dikirim ke Admin. Setelah Admin menerbitkan token sesuai paket Anda, klik tombol "Token" di bagian atas untuk mulai simulasi.`,
+                message: `Terima kasih, ${name}!\nPilihan Paket: ${selectedPackage}\n\nData pendaftaran Anda telah tercatat dan siap diterbitkan token oleh Admin.`,
                 type: 'success'
             });
-        }
-
-        function selectPackageFromCatalog(packageName) {
-            if (!hasFullParticipantAccess() || !isPackageAllowedForCurrentUser(packageName)) {
-                openPackageRegistrationModal(packageName);
-                return;
-            }
-            switchView('view-sim-config');
-            const simSelect = document.getElementById('sim-package-select');
-            if (simSelect) simSelect.value = packageName;
         }
 
         function openTokenModal() {
             const modal = document.getElementById('token-modal');
             const input = document.getElementById('participant-token-input');
             if (!modal) return;
-            if (input) input.value = '';
+            if (input) input.value = state.access.tokenCode && state.access.tokenCode !== 'ADMIN' ? state.access.tokenCode : '';
             modal.classList.remove('hidden');
             modal.classList.add('flex');
             if (input) setTimeout(() => input.focus(), 60);
@@ -2397,28 +2414,30 @@ function doPost(e) {
                 return;
             }
 
-            if (state.sheetsUrl) {
+            let matched = (state.tokens || []).find(t => String(t.code || '').toUpperCase() === rawCode);
+            if (!matched && state.sheetsUrl) {
                 await syncTokensWithSheets(true);
+                matched = (state.tokens || []).find(t => String(t.code || '').toUpperCase() === rawCode);
             }
 
-            const matched = state.tokens.find(t => (t.code || '').toUpperCase() === rawCode && t.active !== false);
             if (!matched) {
                 showModal({
-                    title: 'Token Tidak Valid / Nonaktif',
-                    message: 'Kode token tidak ditemukan atau sudah dinonaktifkan oleh Admin. Pastikan penulisan huruf dan angka sudah benar.',
+                    title: 'Token Tidak Ditemukan',
+                    message: 'Kode token tidak valid atau belum terdaftar. Pastikan penulisan benar atau daftar paket terlebih dahulu.',
                     type: 'danger'
                 });
+                return;
+            }
+
+            if (matched.active === false || String(matched.active).toLowerCase() === 'false') {
+                showModal({ title: 'Token Nonaktif', message: 'Token ini telah dinonaktifkan oleh Administrator.', type: 'danger' });
                 return;
             }
 
             if (matched.expiresAt) {
                 const today = new Date().toISOString().slice(0, 10);
                 if (matched.expiresAt < today) {
-                    showModal({
-                        title: 'Token Kedaluwarsa',
-                        message: `Masa berlaku token ini telah berakhir pada ${matched.expiresAt}. Silakan hubungi Admin untuk perpanjangan.`,
-                        type: 'warning'
-                    });
+                    showModal({ title: 'Token Kedaluwarsa', message: `Masa berlaku token berakhir pada ${matched.expiresAt}.`, type: 'warning' });
                     return;
                 }
             }
@@ -2971,14 +2990,37 @@ function doPost(e) {
         function navigateQuestion(step) {
             if (!state.exam) return;
             const nextIdx = state.exam.currentIndex + step;
-            if (nextIdx >= state.exam.questions.length) {
-                confirmFinishExam();
-                return;
-            }
-            if (nextIdx >= 0) {
+            if (nextIdx >= 0 && nextIdx < state.exam.questions.length) {
                 state.exam.currentIndex = nextIdx;
                 persistActiveExamSession();
                 renderCurrentExamQuestion();
+            } else if (nextIdx >= state.exam.questions.length) {
+                confirmFinishExam();
+            }
+        }
+
+        function toggleMobileMenu(forceState) {
+            const drawer = document.getElementById('mobile-nav-drawer');
+            const icon = document.getElementById('mobile-menu-icon');
+            if (!drawer) return;
+            const willOpen = typeof forceState === 'boolean' ? forceState : drawer.classList.contains('hidden');
+            if (willOpen) {
+                drawer.classList.remove('hidden');
+                if (icon) icon.className = 'ph-bold ph-x text-lg';
+            } else {
+                drawer.classList.add('hidden');
+                if (icon) icon.className = 'ph-bold ph-list text-lg';
+            }
+        }
+
+        function toggleAdminMoreDropdown(forceState) {
+            const menu = document.getElementById('admin-more-dropdown-menu');
+            if (!menu) return;
+            const willOpen = typeof forceState === 'boolean' ? forceState : menu.classList.contains('hidden');
+            if (willOpen) {
+                menu.classList.remove('hidden');
+            } else {
+                menu.classList.add('hidden');
             }
         }
 
@@ -4395,6 +4437,13 @@ function doPost(e) {
 
         window.addEventListener('load', () => {
             document.querySelectorAll('.view-section:not(.hidden)').forEach(sec => renderMathInContainer(sec));
+        });
+
+        document.addEventListener('click', (event) => {
+            const wrap = document.getElementById('admin-more-dropdown-wrap');
+            if (wrap && !wrap.contains(event.target)) {
+                toggleAdminMoreDropdown(false);
+            }
         });
     </script>
 </body>
