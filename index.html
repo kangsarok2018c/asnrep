@@ -4352,29 +4352,69 @@ function doPost(e) {
           try {
             const parsed = JSON.parse(e.target.result || "[]");
             const arr = Array.isArray(parsed) ? parsed : Array.isArray(parsed.questions) ? parsed.questions : [];
+            const rootPackage = !Array.isArray(parsed) && parsed.packageId ? String(parsed.packageId).trim() : "";
+            const rootCategory = !Array.isArray(parsed) && parsed.category ? String(parsed.category).toUpperCase().trim() : "";
             const valid = [];
             const warnings = [];
+            const letterMap = { A: 0, B: 1, C: 2, D: 3, E: 4 };
+
             arr.forEach((item, idx) => {
-              const sub = String(item.subtest || "").toUpperCase();
+              const sub = String(item.subtest || item.category || rootCategory || "")
+                .toUpperCase()
+                .trim();
               if (!["TWK", "TIU", "TKP"].includes(sub)) {
-                warnings.push(`Item #${idx + 1}: Subtes tidak valid.`);
+                warnings.push(`Item #${idx + 1}: Subtes/category "${sub || "-"}" tidak valid (harus TWK, TIU, atau TKP).`);
                 return;
               }
-              if (!item.text || !Array.isArray(item.options) || item.options.length < 5) {
+
+              const questionText = String(item.text || item.question || "").trim();
+              const rawOptions = Array.isArray(item.options) ? item.options : [];
+              const normalizedOptions = rawOptions.slice(0, 5).map((opt) => (typeof opt === "object" && opt !== null ? String(opt.text || opt.label || "").trim() : String(opt || "").trim()));
+
+              if (!questionText || normalizedOptions.length < 5 || normalizedOptions.some((o) => !o)) {
                 warnings.push(`Item #${idx + 1}: Teks soal atau 5 opsi jawaban tidak lengkap.`);
                 return;
               }
+
+              // Tentukan correctIndex dari correctIndex, correctOptionId, atau label A-E
+              let resolvedCorrectIndex = 0;
+              if (typeof item.correctIndex === "number" && item.correctIndex >= 0 && item.correctIndex < 5) {
+                resolvedCorrectIndex = item.correctIndex;
+              } else if (item.correctOptionId) {
+                const targetId = String(item.correctOptionId).trim();
+                const foundIdx = rawOptions.slice(0, 5).findIndex((opt) => typeof opt === "object" && opt !== null && String(opt.id || "").trim() === targetId);
+                if (foundIdx >= 0) {
+                  resolvedCorrectIndex = foundIdx;
+                } else {
+                  const suffixLetter = targetId.slice(-1).toUpperCase();
+                  if (letterMap[suffixLetter] !== undefined) resolvedCorrectIndex = letterMap[suffixLetter];
+                }
+              } else if (item.correctAnswer || item.answer) {
+                const ansKey = String(item.correctAnswer || item.answer)
+                  .toUpperCase()
+                  .trim();
+                if (letterMap[ansKey] !== undefined) resolvedCorrectIndex = letterMap[ansKey];
+              }
+
+              // Tentukan skor TKP jika opsi berbentuk objek dengan properti score/points
+              let resolvedOptionScores = [5, 4, 3, 2, 1];
+              if (Array.isArray(item.optionScores) && item.optionScores.length >= 5) {
+                resolvedOptionScores = item.optionScores.slice(0, 5).map((n) => Number(n) || 0);
+              } else if (rawOptions.slice(0, 5).some((opt) => typeof opt === "object" && opt !== null && (opt.score !== undefined || opt.points !== undefined))) {
+                resolvedOptionScores = rawOptions.slice(0, 5).map((opt) => (typeof opt === "object" && opt !== null ? Number(opt.score ?? opt.points ?? 0) : 0));
+              }
+
               valid.push({
                 id: item.id || `${sub}-JSON-${Date.now()}-${idx}`,
                 subtest: sub,
-                topic: item.topic || "Umum",
-                package: item.package || "Umum / Latihan Bebas",
-                text: item.text,
-                options: item.options.slice(0, 5),
-                correctIndex: typeof item.correctIndex === "number" ? item.correctIndex : 0,
-                optionScores: Array.isArray(item.optionScores) ? item.optionScores : [5, 4, 3, 2, 1],
-                explanation: item.explanation || "",
-                imageUrl: sanitizeSafeUrl(item.imageUrl || "", ""),
+                topic: String(item.topic || item.subcategory || "Umum").trim(),
+                package: String(item.package || item.packageId || rootPackage || "Umum / Latihan Bebas").trim(),
+                text: questionText,
+                options: normalizedOptions,
+                correctIndex: resolvedCorrectIndex,
+                optionScores: resolvedOptionScores,
+                explanation: String(item.explanation || "").trim(),
+                imageUrl: sanitizeSafeUrl(item.imageUrl || item.image || "", ""),
               });
             });
             openImportPreviewModal("JSON", valid, warnings);
